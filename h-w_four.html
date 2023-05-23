@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Canvas Application</title>
+  <style>
+    #canvas {
+      border: 2px solid black;
+      background: gray;
+      margin: 10rem 30rem;
+    
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="300"></canvas>
+
+  <script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    var x = 200;
+    var y = 150;
+    var radius = 50;
+    drawCircle(x, y);
+
+   
+    canvas.addEventListener("click", function(event) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      x = event.clientX - canvas.offsetLeft;
+      y = event.clientY - canvas.offsetTop;
+
+      drawCircle(x, y);
+    });
+
+    function drawCircle(x, y) {
+      ctx.fillStyle = "green";
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  </script>
+</body>
+</html>
